@@ -7,18 +7,18 @@ import Post from './components/post'
 function App() {
   return (
     <div className="App">
-      <Home />
       <Router>
         <Switch>
+          <Route exact path='/'>   
+          <Home></Home>
+        </Route>
+        <Route path='/Post'>
 
-
-          <Route path='/Post'>
-           
-            <Post></Post>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+          <Post></Post>
+        </Route>
+      </Switch>
+    </Router>
+    </div >
   );
 }
 
