@@ -24,32 +24,36 @@ function Home(props) {
     return (
         <>
             <div >
-                <Table striped bordered hover>
-                    <thead>
+                <Table striped bordered hover style={{marginTop:"5%"}}>
+                    <thead style={{marginTop:"5%"}}>
                         <tr  >
                             {/* <th></th> */}
-                            <th className="col ">name</th>
-                            <th className="col">email</th>
-                            <th className="col">company name</th>
+                            <th className="col-4">name
+                            <input
+                                className="input-margin border"
+                                style={{marginLeft:"2%"}}
+                                type="text"
+                                value={filterByName}
+                                placeholder="Filter"
+                                onChange={e => setFilterByName(e.target.value)}
+                            />
+                         </th>
+                            <th className="col-4">email
+                            <input
+                                className="input-margin border"
+                                style={{marginLeft:"2%"}}
+                                type="text"
+                                value={filterByEmail}
+                                placeholder="Filter"
+                                onChange={e => setFilterByEmail(e.target.value)}
+                            />
+                            </th>
+                            <th className="col-4">company name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td colSpan="4">
-                            <input
-                                className="input-margin border"
-                                type="text"
-                                value={filterByName}
-                                placeholder="Filter By Name"
-                                onChange={e => setFilterByName(e.target.value)}
-                            />
-                            <input
-                                className="input-margin border"
-                                type="text"
-                                value={filterByEmail}
-                                placeholder="Filter By Email"
-                                onChange={e => setFilterByEmail(e.target.value)}
-                            /></td>
-                        {usersDetails.filter((o => o.name.toLowerCase().startsWith(filterByName.toLowerCase()) && o.email.toLowerCase().includes(filterByEmail.toLowerCase())))
+                         {usersDetails.filter((o => (o.name.split(' ')[0].toLowerCase().startsWith(filterByName.toLowerCase())|| o.name.split(' ')[1].toLowerCase().startsWith(filterByName.toLowerCase())) && o.email.toLowerCase().includes(filterByEmail.toLowerCase())))
+                                           
                             .map((user, i) => {
                                 return <tr>
 
